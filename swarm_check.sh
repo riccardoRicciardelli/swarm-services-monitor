@@ -9,18 +9,25 @@
 
 set -euo pipefail
 
+# Carica variabili dal file .env se presente
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -f "${SCRIPT_DIR}/.env" ]; then
+  # shellcheck source=/dev/null
+  source "${SCRIPT_DIR}/.env"
+fi
+
 # ============================================================
 # CONFIGURAZIONE - modifica questi valori
 # ============================================================
 
 # --- Slack ---
 # Lascia vuoto ("") per disabilitare Slack
-SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
 
 # --- Telegram ---
 # Lascia vuoti ("") per disabilitare Telegram
-TELEGRAM_BOT_TOKEN=""
-TELEGRAM_CHAT_ID=""
+TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN:-}"
+TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-}"
 
 # File dove viene salvato lo stato precedente (per la deduplica)
 STATE_DIR="/var/lib/swarm-monitor"

@@ -30,7 +30,7 @@ TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN:-}"
 TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-}"
 
 # File dove viene salvato lo stato precedente (per la deduplica)
-STATE_DIR="/var/lib/swarm-monitor"
+STATE_DIR="state"
 STATE_FILE="${STATE_DIR}/state.db"
 
 # Nome host da includere nei messaggi (utile se monitori più cluster)

@@ -63,6 +63,7 @@ notify() {
   local text="$1"
   send_slack "$text"
   send_telegram "$text"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $text"
 }
 
 # ============================================================
@@ -88,6 +89,7 @@ set_status() {
   mv "${STATE_FILE}.tmp" "$STATE_FILE"
   echo "${svc}|${status}" >> "$STATE_FILE"
 }
+
 
 # ============================================================
 # CHECK PRINCIPALE
